@@ -26,6 +26,10 @@ function loadBooks() {
 
 
 function initializeBooks() {
+<<<<<<< HEAD
+    console.log("INIT KNJIGA")
+=======
+>>>>>>> 299efa307f4ff1d331b9353daeb019eaee8b48d8
     let books = loadBooks()
     if (books.length === 0) {
         books = [
@@ -73,6 +77,7 @@ function createBookRows (books) {
     }
 }
 
+<<<<<<< HEAD
 function clickDeleteBook(id) {
     
     let books = JSON.parse(localStorage.getItem('books'));
@@ -87,4 +92,38 @@ function clickDeleteBook(id) {
 
 }
 
+=======
+>>>>>>> 299efa307f4ff1d331b9353daeb019eaee8b48d8
+function handleFormSubmission(books) {
+    console.log('Dugme kliknuto')
+    let submitBtn = document.querySelector("#addBook");
+
+    submitBtn.addEventListener('click', function () {
+        const form = document.querySelector("#booksForm");
+        const formData = new FormData(form);
+
+        const title = formData.get("title");
+        const bookId = formData.get("bookId");
+        const type = formData.get("type");
+        const picture = formData.get("picture");
+
+        for (let i = 0; i < books.length; i++) {
+            if (title === books[i].title) {
+                return;
+            }
+        }
+
+        const newBook = new Book(bookId, title, null, type, picture, 'desc', 0) ;
+        books.push(newBook);
+        saveBooks(books);
+        createBookRows(books);
+
+        form.reset();
+    });
+}
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> 299efa307f4ff1d331b9353daeb019eaee8b48d8
 document.addEventListener('DOMContentLoaded',initializeBooks);
