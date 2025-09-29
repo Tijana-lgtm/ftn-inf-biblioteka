@@ -1,0 +1,19 @@
+#booksForm {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    border: 1px solid #000;
+    padding: 10px;
+
+}
+
+label {
+    margin-top: 10px;
+}
+
+button {
+    align-self: flex-end;
+    margin-top: 15px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
