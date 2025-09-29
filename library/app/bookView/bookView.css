@@ -1,38 +1,4 @@
-<<<<<<< HEAD
-body {
-    font-family: sans-serif;
-    padding: 20px;
-}
 
-table {
-    border-collapse: collapse;
-    width: 40%;
-}
-
-th, td {
-    border: 1px solid black;
-    padding: 8px;
-    text-align: center;
-}
-
-th {
-    background-color: #f0f0f0; 
-}
-
-tr:hover {
-    background-color: #ddd;
-}
-
-#tableDetails {
-    border: 1px solid rgb(219, 107, 107);
-    padding: 10px;
-    width: 40%;
-    margin-top: 20px;
-    line-height: 1.5;
-}
-
-
-=======
 #booksForm {
     display: flex;
     flex-direction: column;
@@ -52,4 +18,4 @@ button {
     padding: 5px 10px;
     cursor: pointer;
 }
->>>>>>> 299efa307f4ff1d331b9353daeb019eaee8b48d8
+

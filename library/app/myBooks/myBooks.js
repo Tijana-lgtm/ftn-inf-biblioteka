@@ -1,53 +1,3 @@
-function createRendedBooksRos (rentedBooks) {
-    let table = document.querySelector ("#rentedBooks")
-
-    table.innerHTML = ''
-
-    for (let i=0; i<rentedBooks.length; i++){
-
-            let tr = document.createElement ("tr")
-
-            let id = document.createElement ("td")
-            let title = document.createElement ("td")
-            let action = document.createElement ("button")
-
-            id.textContent = rentedBooks[i].id;
-            title.textContent = rentedBooks[i].title;
-            action.textContent = 'Return'
-
-            tr.appendChild (id);
-            tr.appendChild(title);
-            tr.appendChild(action);
-
-
-            action.addEventListener ('click', function () {
-                
-                clickReturnButton(id.innerHTML)
-            })
-
-            table.appendChild(tr);
-
-    }
-}
-
-function clickReturnButton(id) {
-    
-    let rentedBooks = JSON.parse(localStorage.getItem('rentedBooks'));
-    let availableBooks = JSON.parse(localStorage.getItem('availableBooks'));
-    for (let i = 0; i < rentedBooks.length; i++) {
-        if (rentedBooks[i].id == id) {
-            availableBooks.push(rentedBooks[i])
-            rentedBooks.splice(i,1)
-        }
-    }
-    saveAvailableBooks(availableBooks)
-    saveRentedBooks(rentedBooks)
-    createRendedBooksRos(rentedBooks)
-    createAvailableBooksRows(availableBooks)
-
-
-}
-
 function clickRentButton(id) {
     
     let rentedBooks = JSON.parse(localStorage.getItem('rentedBooks'));
@@ -56,11 +6,11 @@ function clickRentButton(id) {
         if (availableBooks[i].id == id) {
             rentedBooks.push(availableBooks[i])
             availableBooks.splice(i,1)
+            break
         }
     }
     saveAvailableBooks(availableBooks)
     saveRentedBooks(rentedBooks)
-    createRendedBooksRos(rentedBooks)
     createAvailableBooksRows(availableBooks)
 
 
@@ -77,15 +27,18 @@ function createAvailableBooksRows (availableBooks) {
 
             let id = document.createElement ("td")
             let title = document.createElement ("td")
+            let actionTd = document.createElement("td")
             let action = document.createElement ("button")
 
             id.textContent = availableBooks[i].id;
             title.textContent = availableBooks[i].title;
-            action.textContent = 'Rent'
+            action.textContent = 'Iznajmi'
+
+            actionTd.appendChild(action);
 
             tr.appendChild (id);
             tr.appendChild(title);
-            tr.appendChild(action);
+            tr.appendChild(actionTd);
 
 
             action.addEventListener ('click', function () {
@@ -141,13 +94,6 @@ function initializeBooks() {
         saveBooks(books)
     }
 
-    if (rentedBooks.length === 0) {
-        rentedBooks = [
-            { id: "B1234", title: "Knjiga 1", date: "2022", url: "assets/images/book1.jpg", description: "Opis knjige 1", popularity: 4 }
-        ];
-        saveRentedBooks(rentedBooks)
-    }
-
      for (let i = 0; i < books.length; i++) {
         let found = false;
         for (let j = 0; j < rentedBooks.length; j++) {
@@ -160,7 +106,8 @@ function initializeBooks() {
         if(!found) availableBooks.push(books[i])
     }
     saveAvailableBooks(availableBooks)     
-    createRendedBooksRos(rentedBooks)
     createAvailableBooksRows(availableBooks)
 }
+
+
 document.addEventListener('DOMContentLoaded',initializeBooks);
