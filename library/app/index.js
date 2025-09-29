@@ -6,6 +6,7 @@ const books = [
     { id: "B3141", title: "Knjiga 5", date: "2018", url: "assets/images/book5.jpg", description: "Opis knjige 5", popularity: 5 }
 ];
 
+
 const bookList = document.getElementById("book-list");
 
 for (let i = 0; i < books.length; i++) {
@@ -20,3 +21,4 @@ for (let i = 0; i < books.length; i++) {
     `;
     bookList.appendChild(bookDiv);
 }
+
