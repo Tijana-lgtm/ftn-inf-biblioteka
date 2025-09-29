@@ -61,11 +61,11 @@ function initializeBooks() {
         if(!found) availableBooks.push(books[i])
     }
     saveAvailableBooks(availableBooks)     
-    createRendedBooksRos(rentedBooks)
+    createRentedBooksRows(rentedBooks)
     createAvailableBooksRows(availableBooks)
 }
 
-function createRendedBooksRos (rentedBooks) {
+function createRentedBooksRows (rentedBooks) {
     let table = document.querySelector ("#rentedBooks")
 
     table.innerHTML = ''
@@ -108,7 +108,7 @@ function clickReturnButton(id) {
     }
     saveAvailableBooks(availableBooks)
     saveRentedBooks(rentedBooks)
-    createRendedBooksRos(rentedBooks)
+    createRentedBooksRows(rentedBooks)
     createAvailableBooksRows(availableBooks)
 }
 
